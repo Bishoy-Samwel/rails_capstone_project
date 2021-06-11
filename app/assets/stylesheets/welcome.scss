@@ -2,38 +2,39 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-html, body {
-    height: 100%;
-  }
-
-.left-nav{
-    background-color: #1c2a3d;
+html,
+body {
+  height: 100%;
 }
 
-.right-1{
-    background-color: rgb(246, 246, 246);;
+.left-nav {
+  background-color: #1c2a3d;
 }
 
-.top-nav-1{
-    background-color: #54ace3;
+.right-1 {
+  background-color: rgb(246, 246, 246);
 }
 
-.bottom-1{
-    background-color: rgb(246, 246, 246);
+.top-nav-1 {
+  background-color: #54ace3;
 }
 
-.main-info{
-    background-color: rgb(246, 246, 246);
+.bottom-1 {
+  background-color: rgb(246, 246, 246);
 }
 
-.right-2{
-    background-color: rgb(246, 246, 246);
+.main-info {
+  background-color: rgb(246, 246, 246);
 }
 
-.top-nav-2{
-    background-color: rgb(246, 246, 246);
+.right-2 {
+  background-color: rgb(246, 246, 246);
 }
 
-.bottom-2{
-    background-color: rgb(246, 246, 246);
+.top-nav-2 {
+  background-color: rgb(246, 246, 246);
+}
+
+.bottom-2 {
+  background-color: rgb(246, 246, 246);
 }
