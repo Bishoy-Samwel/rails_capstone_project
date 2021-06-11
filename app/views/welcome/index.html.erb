@@ -1,6 +1,151 @@
 <% if Current.user %>
-    Logged in as: <%= Current.user.full_name %><br>
-    <%= button_to 'Logout', logout_path, method: :delete %>
+
+<div class="container-fluid h-100">
+  <div class="row h-100 d-flex">
+    <!-- Left Side -->
+    <div class="left-nav col-2 h-100 column">
+      <div class="user-info row pl-3 pt-3 pb-4 d-flex">
+        <img src="https://picsum.photos/70/70" class="rounded float-left" alt="...">
+        <p class="user-name text-muted font-weight-bold align-self-center px-2"><%= Current.user.full_name %></p>
+        <div class="row user-follow row pt-3 mx-auto">
+          <div class="following column px-2">
+            <p class="text-muted font-weight-bold m-0"><%= Current.user.follows.count %></p>
+            <p class="text-muted font-weight-bold m-0">Following</p>
+          </div>
+          <div class="follower column px-2">
+            <p class="text-muted font-weight-bold m-0"> <%= Current.user.followers.count %> </p>
+            <p class="text-muted font-weight-bold m-0">Followers</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <a class="text-decoration-none d-flex" href="#">
+          <i class="text-muted fa fa-home" aria-hidden="true"></i>
+          <p class="text-light text-uppercase px-3">home</p>
+        </a>
+        <a class="text-decoration-none d-flex d-flex" href="#">
+          <i class="text-muted  fa fa-globe" aria-hidden="true"></i>
+          <p class="text-light text-uppercase px-3">connect</p>
+        </a>
+        <a class="text-decoration-none d-flex" href="#">
+          <i class="text-muted  fa fa-hashtag" aria-hidden="true"></i>
+          <p class="text-light text-uppercase px-3">discover</p>
+        </a>
+        <a class="text-decoration-none d-flex" href="#">
+          <i class="text-muted  fa fa-user" aria-hidden="true"></i>
+          <p class="text-light text-uppercase px-3">people</p>
+        </a>
+        <a class="text-decoration-none d-flex" href="#">
+          <i class="text-muted  fa fa-calculator" aria-hidden="true"></i>
+          <p class="text-light text-uppercase px-3">statistics</p>
+        </a>
+      </div>
+    </div>
+    <!-- Right Side -->
+    <div class="right-1 p-0 col-10 column h-100">
+      <!-- 1st-Top_nav_icons -->
+      <div class="top-nav-1 d-flex justify-content-end py-2">
+        <a class="px-5 py-2 mr-auto" href=""><i class="fa fa-home" aria-hidden="true"></i></a>
+        <a class="px-4 py-2" href=""><i class="fa fa-pen" aria-hidden="true"></i></a>
+        <a class="px-4 py-2" href=""><i class="fa fa-envelope" aria-hidden="true"></i></a>
+        <a class="px-4 py-2" href=""><i class="fa fa-search" aria-hidden="true"></i></a>
+        <a class="px-4 py-2" href=""><i class="fa fa-cog" aria-hidden="true"></i></a>
+        <%= button_to 'Logout', logout_path, method: :delete %>
+      </div>
+      <div class="bottom-1 row m-0 ">
+        <div class="main-info col-9 column p-0">
+          <!-- 2nd-Top_nav -->
+          <div class="top-nav-2">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="tweets-tab" data-toggle="tab" href="#tweets" role="tab"
+                  aria-controls="tweets" aria-selected="true">Tweets</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="photos-tab" data-toggle="tab" href="#photos" role="tab" aria-controls="photos"
+                  aria-selected="false">Photos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="videos-tab" data-toggle="tab" href="#videos" role="tab" aria-controls="videos"
+                  aria-selected="false">Videos</a>
+              </li>
+            </ul>
+          </div>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="tweets" role="tabpanel" aria-labelledby="tweets-tab">
+              <!-- Write your tweet -->
+              <div class="d-flex flex-column px-5 py-3 mx-4 mt-4 bg-white">
+                <p class="font-weight-bold my-0 text-muted">Write Opinion</p>
+                <textarea  name="" id=""  rows="2" placeholder="Describe yourself here..."> </textarea>
+              </div>
+              <!-- Tweets of the follows -->
+                
+              <div class="px-5 bg-white mx-4 mt-4 pt-3">
+                <p class="text-muted font-weight-bold"> New Tweets </p>
+                <hr>
+                <div class=" d-flex pt-3">
+                  <img src="https://picsum.photos/70/70" height="100%" class="rounded float-left pr-3 align-self-start"
+                    alt="...">
+                  <div class="d-flex align-self-center flex-column">
+                    <p class="font-weight-bold my-0">Alex</p>
+                    <p class="text-dark"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint eius soluta
+                      repellat culpa molestiae mollitia provident. Error, enim expedita assumenda voluptates sunt
+                      tenetur nemo quo nulla cum, aspernatur voluptatem in. </p>
+                  </div>
+                </div>
+                <div class=" d-flex pt-3">
+                  <img src="https://picsum.photos/70/70" height="100%" class="rounded float-left pr-3 align-self-start"
+                    alt="...">
+                  <div class="d-flex align-self-center flex-column">
+                    <p class="font-weight-bold my-0">Alex</p>
+                    <p class="text-dark"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint eius soluta
+                      repellat culpa molestiae mollitia provident. Error, enim expedita assumenda voluptates sunt
+                      tenetur nemo quo nulla cum, aspernatur voluptatem in. </p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="tab-pane fade" id="photos" role="tabpanel" aria-labelledby="photos-tab">photos</div>
+            <div class="tab-pane fade" id="videos" role="tabpanel" aria-labelledby="videos-tab">videos</div>
+          </div>
+
+        </div>
+        <!-- Who to follow section -->
+        <div class="right-2 border-left border-bottom col-3">
+          <div class="pt-3 mx-3 d-flex justify-content-between">
+            <p class="font-weight-bold text-muted">Who To Follow</p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
+              <path
+                d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
+            </svg>
+          </div>
+          <hr class="mx-3">
+
+          <div class="d-flex flex-column p-2">
+            <div class="d-flex my-2">
+              <img src="https://picsum.photos/70/70" alt="" class="rounded-circle h-100 align-self-start">
+              <div class="d-flex flex-column p-2">
+                <p class="font-weight-bold align-self-start">Johan Libert</p>
+                <p class="align-self-start">Followed By <a href="">Bishoy</a></p>
+              </div>
+            </div>
+
+          </div>
+          <hr class="mx-3">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+    
+    
 <% else %>
     <%= link_to 'Sign Up', sign_up_path %>
     or
