@@ -10,10 +10,11 @@ class User < ApplicationRecord
   has_many :follows, through: :followings, source: :followed
   has_many :followers, through: :inverse_followings, source: :follower
 
-  def home_opinion
-    @home_opinions = current.user.opinions
+  def home_opinions
+    home_opinions = Current.user.opinions
     Current.user.follows.each do |follow|
-      @home_opinions += follow.opinions
+      home_opinions += follow.opinions
     end
+    home_opinions
   end
 end
