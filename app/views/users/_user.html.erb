@@ -1,0 +1,14 @@
+<div class="d-flex flex-column p-2">
+    <div class="d-flex my-2">
+    <% if user.photo.attached? %>
+    <img src="<%=(url_for(user.photo))%>" height=80, width=80, alt="" class="rounded-circle align-self-start">
+    <!-- <%= image_tag Current.user.photo.variant(resize:"500x500", momochrome:true) %> -->
+    <% else %>
+      <img src="https://picsum.photos/70/70" class="rounded-circle align-self-start">
+    <%end%>
+      <div class="d-flex flex-column p-2">
+        <p class="font-weight-bold align-self-start"><%=user.full_name%></p>
+        <p class="align-self-start">Followed By <a href="">Bishoy</a></p>
+      </div>
+    </div>
+  </div>
