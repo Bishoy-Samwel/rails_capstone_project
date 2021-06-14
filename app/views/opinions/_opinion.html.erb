@@ -1,3 +1,7 @@
-<li class="post">
-    <%= post.content %>
-</li>
+ <div class=" d-flex pt-3">
+                  <img src="<%=(url_for(opinion.author.photo))%>" height= 90, width= 90 ,class="rounded float-left  align-self-start", alt="...">
+                  <div class="pl-3 d-flex align-self-center flex-column">
+                    <p class="font-weight-bold my-0"><%= opinion.author.full_name%></p>
+                    <p class="text-dark"> <%= opinion.text%> </p>
+                  </div>
+</div>
