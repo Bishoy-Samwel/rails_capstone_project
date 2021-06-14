@@ -9,8 +9,10 @@ class User < ApplicationRecord
   has_many :inverse_followings, class_name: 'Following', foreign_key: 'followed_id'
   has_many :follows, through: :followings, source: :followed
   has_many :followers, through: :inverse_followings, source: :follower
+  # Find the users where id != user and id != any id of user follows
   scope :who_to_follow, ->(user) { where.not(id: user.id).where.not(id: user.follows).order('created_at DESC') }
-  # scope :followed_by, ->(user)
+  # Find the intersection between Current.user.follows and user.followers
+  scope :followed_by, ->(current,user){ (current.follows)&(user.followers)}
 
   def home_opinions
     home_opinions = Current.user.opinions
