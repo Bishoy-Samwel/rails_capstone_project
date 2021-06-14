@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :inverse_followings, class_name: 'Following', foreign_key: 'followed_id'
   has_many :follows, through: :followings, source: :followed
   has_many :followers, through: :inverse_followings, source: :follower
-  scope :who_to_follow, ->(user) {where.not(id: user.id).where.not(id: user.follows).order('created_at DESC')}
+  scope :who_to_follow, ->(user) { where.not(id: user.id).where.not(id: user.follows).order('created_at DESC') }
   # scope :followed_by, ->(user)
 
   def home_opinions
