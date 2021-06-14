@@ -1,5 +1,10 @@
  <div class=" d-flex pt-3">
-                  <img src="<%=(url_for(opinion.author.photo))%>" height= 90, width= 90 ,class="rounded float-left  align-self-start", alt="...">
+                  
+                  <% if opinion.author.photo.attached? %>
+    <img src="<%=(url_for(opinion.author.photo))%>" height= 90, width= 90 ,class="rounded float-left  align-self-start", alt="...">
+    <% else %>
+      <img src="https://picsum.photos/70/70" class="rounded-circle align-self-start">
+    <%end%>
                   <div class="pl-3 d-flex align-self-center flex-column">
                     <p class="font-weight-bold my-0"><%= opinion.author.full_name%></p>
                     <p class="text-dark"> <%= opinion.text%> </p>
