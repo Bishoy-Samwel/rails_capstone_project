@@ -1,5 +1,8 @@
 class HomeController < ApplicationController
   def index
-   @home_opinions = Current.user.home_opinions  if Current.user
+    if Current.user
+      @home_opinions = Current.user.home_opinions
+      @who_to_follow = User.who_to_follow(Current.user)
+    end
   end
 end
