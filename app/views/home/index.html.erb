@@ -3,7 +3,7 @@
 <div class="container-fluid h-100">
   <div class="row h-100 d-flex">
     <!-- Left Side -->
-    <div class="left-nav col-2 h-100 column">
+    <div class="left-nav col-2 column position-static">
       <div class="user-info row pl-3 pt-3 pb-4 d-flex">
        <% if Current.user.photo.attached? %>
           <img src="<%=(url_for(Current.user.photo))%>" width=70, height=70, class="rounded float-left" alt="...">
@@ -62,8 +62,9 @@
         <%end%>
         
       </div>
-      <div class="bottom-1 row m-0 ">
-        <div class="main-info col-9 column p-0">
+      <%# Bottom side %>
+      <div class="bottom-1 row m-0 h-100">
+        <div class="main-info col-9 column p-0 h-100" >
           <!-- 2nd-Top_nav -->
           <div class="top-nav-2">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -81,9 +82,9 @@
               </li>
             </ul>
           </div>
+          <!-- Write your tweet -->
           <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="tweets" role="tabpanel" aria-labelledby="tweets-tab">
-              <!-- Write your tweet -->
               <div class="d-flex flex-column px-5 py-3 mx-4 mt-4 bg-white">
                 <p class="font-weight-bold my-3 text-muted">Write Opinion</p>
                 
@@ -109,7 +110,7 @@
 
         </div>
         <!-- Who to follow section -->
-        <div class="right-2 border-left border-bottom col-3">
+        <div class="right-2 border-left border-bottom col-3 h-100">
           <div class="pt-3 mx-3 d-flex justify-content-between">
             <p class="font-weight-bold text-muted">Who To Follow</p>
 
@@ -121,9 +122,9 @@
             </svg>
           </div>
           <hr class="mx-3">
-          
+          <div class="d-flex flex-column p-2  h-100" style='overflow:scroll;'>
             <%= render @who_to_follow%>
-
+          </div>
           <hr class="mx-3">
         </div>
       </div>
