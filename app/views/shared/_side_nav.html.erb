@@ -1,0 +1,44 @@
+<div class="left-nav col-2 column position-static">
+      <div class="user-info row pl-3 pt-3 pb-4 d-flex">
+       <% if Current.user.photo.attached? %>
+          <img src="<%=(url_for(Current.user.photo))%>" width=70, height=70, class="rounded float-left" alt="...">
+         <!-- <%= image_tag Current.user.photo.variant(resize:"500x500", momochrome:true) %> -->
+        <% else %>
+          <img src="https://picsum.photos/70/70" class="rounded float-left" alt="...">
+        <%end%>
+        <p class="user-name text-muted font-weight-bold align-self-center px-2">
+        <%= Current.user.full_name %></p>
+        <div class="pt-3 d-flex justify-content-between ">
+          <div class="following d-flex flex-column mx-3">
+             <p class="text-muted font-weight-bold m-0"><%= Current.user.follows.count %></p>
+            <p class="text-muted font-weight-bold m-0">Following</p>
+          </div>
+          <div class="follower d-flex flex-column mx-3">
+            <p class="text-muted font-weight-bold m-0"> <%= Current.user.followers.count %> </p>
+            <p class="text-muted font-weight-bold m-0">Followers</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <a class="text-decoration-none d-flex" href="#">
+          <i class="text-muted fa fa-home" aria-hidden="true"></i>
+          <p class="text-light text-uppercase px-3 text-muted">home</p>
+        </a>
+        <a class="text-decoration-none d-flex d-flex" href="#">
+          <i class="text-muted  fa fa-globe" aria-hidden="true"></i>
+          <p class="text-light text-uppercase px-3 text-muted">connect</p>
+        </a>
+        <a class="text-decoration-none d-flex" href="#">
+          <i class="text-muted  fa fa-hashtag" aria-hidden="true"></i>
+          <p class="text-light text-uppercase px-3 text-muted">discover</p>
+        </a>
+        <a class="text-decoration-none d-flex" href="#">
+          <i class="text-muted  fa fa-user" aria-hidden="true"></i>
+          <p class="text-light text-uppercase px-3 text-muted">people</p>
+        </a>
+        <a class="text-decoration-none d-flex" href="#">
+          <i class="text-muted  fa fa-calculator" aria-hidden="true"></i>
+          <p class="text-light text-uppercase px-3 text-muted">statistics</p>
+        </a>
+      </div>
+    </div>
