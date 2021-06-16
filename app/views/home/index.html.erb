@@ -3,65 +3,11 @@
 <div class="container-fluid h-100">
   <div class="row h-100 d-flex">
     <!-- Left Side -->
-    <div class="left-nav col-2 column position-static">
-      <div class="user-info row pl-3 pt-3 pb-4 d-flex">
-       <% if Current.user.photo.attached? %>
-          <img src="<%=(url_for(Current.user.photo))%>" width=70, height=70, class="rounded float-left" alt="...">
-         <!-- <%= image_tag Current.user.photo.variant(resize:"500x500", momochrome:true) %> -->
-        <% else %>
-          <img src="https://picsum.photos/70/70" class="rounded float-left" alt="...">
-        <%end%>
-        <p class="user-name text-muted font-weight-bold align-self-center px-2">
-        <%= Current.user.full_name %></p>
-        <div class="pt-3 d-flex justify-content-between ">
-          <div class="following d-flex flex-column mx-3">
-             <p class="text-muted font-weight-bold m-0"><%= Current.user.follows.count %></p>
-            <p class="text-muted font-weight-bold m-0">Following</p>
-          </div>
-          <div class="follower d-flex flex-column mx-3">
-            <p class="text-muted font-weight-bold m-0"> <%= Current.user.followers.count %> </p>
-            <p class="text-muted font-weight-bold m-0">Followers</p>
-          </div>
-        </div>
-      </div>
-      <div>
-        <a class="text-decoration-none d-flex" href="#">
-          <i class="text-muted fa fa-home" aria-hidden="true"></i>
-          <p class="text-light text-uppercase px-3 text-muted">home</p>
-        </a>
-        <a class="text-decoration-none d-flex d-flex" href="#">
-          <i class="text-muted  fa fa-globe" aria-hidden="true"></i>
-          <p class="text-light text-uppercase px-3 text-muted">connect</p>
-        </a>
-        <a class="text-decoration-none d-flex" href="#">
-          <i class="text-muted  fa fa-hashtag" aria-hidden="true"></i>
-          <p class="text-light text-uppercase px-3 text-muted">discover</p>
-        </a>
-        <a class="text-decoration-none d-flex" href="#">
-          <i class="text-muted  fa fa-user" aria-hidden="true"></i>
-          <p class="text-light text-uppercase px-3 text-muted">people</p>
-        </a>
-        <a class="text-decoration-none d-flex" href="#">
-          <i class="text-muted  fa fa-calculator" aria-hidden="true"></i>
-          <p class="text-light text-uppercase px-3 text-muted">statistics</p>
-        </a>
-      </div>
-    </div>
+    <%= render"shared/side_nav"%>
     <!-- Right Side -->
     <div class="right-1 p-0 col-10 column h-100">
       <!-- 1st-Top_nav_icons -->
-      <div class="top-nav-1 d-flex justify-content-end py-2">
-        <a class="px-5 py-2 mr-auto" href=""><i class="fa fa-home" aria-hidden="true"></i></a>
-        <a class="px-4 py-2" href=""><i class="fa fa-pen" aria-hidden="true"></i></a>
-        <a class="px-4 py-2" href=""><i class="fa fa-envelope" aria-hidden="true"></i></a>
-        <a class="px-4 py-2" href=""><i class="fa fa-search" aria-hidden="true"></i></a>
-        <a class="px-4 py-2" href=""><i class="fa fa-cog" aria-hidden="true"></i></a>
-       
-        <%= link_to logout_path, method: :delete, class:"px-4 py-2" do %>
-         <i class="fa fa-sign-out" aria-hidden="true"></i>
-        <%end%>
-        
-      </div>
+     <%= render"shared/top_nav"%>
       <%# Bottom side %>
       <div class="bottom-1 row m-0 h-100">
         <div class="main-info col-9 column p-0 h-100" >
@@ -85,28 +31,19 @@
           <!-- Write your tweet -->
           <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="tweets" role="tabpanel" aria-labelledby="tweets-tab">
-              <div class="d-flex flex-column px-5 py-3 mx-4 mt-4 bg-white">
-                <p class="font-weight-bold my-3 text-muted">Write Opinion</p>
-                
-                <%= form_for Opinion.new do |f| %>
-                      <%= f.text_field :text, autofocus: true, class: "form-control"%>
-                      <%= f.submit class: "btn btn-primary float-right m-3" %>
-                  <% end %>
-                  
-              </div>
-       
-              
+              <%= render"shared/opinion_form"%>
               <!-- Tweets of the follows -->
-                
               <div class="px-5 bg-white mx-4 mt-4 pt-3">
                 <p class="text-muted font-weight-bold"> New Tweets </p>
                 <hr>
-                <%= render @home_opinions %>
+                <%= render partial: "opinions/opinion", collection: @home_opinions %>
               </div>
+
             </div>
             <div class="tab-pane fade" id="photos" role="tabpanel" aria-labelledby="photos-tab">photos</div>
             <div class="tab-pane fade" id="videos" role="tabpanel" aria-labelledby="vzideos-tab">videos</div>
           </div>
+
 
         </div>
         <!-- Who to follow section -->
@@ -122,8 +59,8 @@
             </svg>
           </div>
           <hr class="mx-3">
-          <div class="d-flex flex-column p-2  h-100" style='overflow:scroll;'>
-            <%= render @who_to_follow%>
+          <div class="d-flex flex-column p-2  h-100 overflow-auto" >
+            <%= render partial: "users/user", collection: @who_to_follow %>
           </div>
           <hr class="mx-3">
         </div>
