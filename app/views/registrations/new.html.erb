@@ -1,3 +1,4 @@
+<div class="text-center flex  m-5 p-5">
 <h1>Sign Up</h1>
 <%= form_with model: @user, url: sign_up_path  do |f| %>
     <p>
@@ -11,8 +12,9 @@
     <p>
     <p>
          <%= f.label 'Profile Picture' %>
-         <%= f.file_field :photo %>
+         <%= f.file_field :photo , class:"btn btn-primary"%>
         </p>
-        <%= f.submit 'Sign Up' %>
+        <%= f.submit 'Sign Up' , class:"btn btn-primary"%>
             </p>
 <% end %>
+</div>
