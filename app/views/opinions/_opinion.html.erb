@@ -1,7 +1,7 @@
  <div class=" d-flex pt-3">
                   
                   <% if opinion.author.photo.attached? %>
-    <img src="<%=(url_for(opinion.author.photo))%>" height= 90, width= 90 ,class="rounded float-left  align-self-start", alt="...">
+    <%= cl_image_tag opinion.author.photo.key, :width=>90, :height=> 90 , :crop=>"fill", :class=>"rounded float-left  align-self-start"%>
     <% else %>
       <img src="https://picsum.photos/70/70" class="rounded-circle align-self-start">
     <%end%>
