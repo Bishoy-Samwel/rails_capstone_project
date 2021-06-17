@@ -12,7 +12,7 @@ class User < ApplicationRecord
   # Find the users where id != user and id != any id of user follows
   scope :who_to_follow, ->(user) { where.not(id: user.id).where.not(id: user.follows).order('created_at DESC') }
   # Find the intersection between Current.user.follows and user.followers
-  scope :followed_by, ->(current,user){ (current.follows)&(user.followers)}
+  scope :followed_by, ->(current, user) { (current.follows) & (user.followers) }
 
   def home_opinions
     home_opinions = Current.user.opinions
