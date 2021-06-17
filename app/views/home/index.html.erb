@@ -5,32 +5,32 @@
     <!-- Left Side -->
     <%= render"shared/side_nav"%>
     <!-- Right Side -->
-    <div class="right-1 p-0 col-10 column h-100">
+    <div class="right-1 p-0 col-10 column h-100 overflow-auto">
       <!-- 1st-Top_nav_icons -->
      <%= render"shared/top_nav"%>
       <%# Bottom side %>
-      <div class="bottom-1 row m-0 h-100">
+      <div class="bottom-1 row m-0 h-100 h-100 ">
         <div class="main-info col-9 column p-0 h-100" >
           <!-- 2nd-Top_nav -->
-          <div class="top-nav-2">
+          <div class="top-nav-2 position-sticky">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
               <li class="nav-item">
                 <a class="nav-link active" id="tweets-tab" data-toggle="tab" href="#tweets" role="tab"
                   aria-controls="tweets" aria-selected="true">Tweets</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="photos-tab" data-toggle="tab" href="#photos" role="tab" aria-controls="photos"
-                  aria-selected="false">Photos</a>
+                <a class="nav-link" id="follows-tab" data-toggle="tab" href="#follows" role="tab" aria-controls="follows"
+                  aria-selected="false">Follows</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="videos-tab" data-toggle="tab" href="#videos" role="tab" aria-controls="videos"
-                  aria-selected="false">Videos</a>
+                <a class="nav-link" id="followers-tab" data-toggle="tab" href="#followers" role="tab" aria-controls="followers"
+                  aria-selected="false">Followers</a>
               </li>
             </ul>
           </div>
           <!-- Write your tweet -->
-          <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="tweets" role="tabpanel" aria-labelledby="tweets-tab">
+          <div class="tab-content h-100 overflow-auto" id="myTabContent">
+            <div class="tab-pane fade show active " id="tweets" role="tabpanel" aria-labelledby="tweets-tab">
               <%= render"shared/opinion_form"%>
               <!-- Tweets of the follows -->
               <div class="px-5 bg-white mx-4 mt-4 pt-3">
@@ -40,8 +40,17 @@
               </div>
 
             </div>
-            <div class="tab-pane fade" id="photos" role="tabpanel" aria-labelledby="photos-tab">photos</div>
-            <div class="tab-pane fade" id="videos" role="tabpanel" aria-labelledby="vzideos-tab">videos</div>
+          <div class="tab-pane fade h-100 overflow-auto" id="follows" role="tabpanel" aria-labelledby="follows-tab">
+                <div class="mx-5 my-5">
+                  <%= render partial: "users/user", collection: Current.user.follows %>
+                </div>
+          </div>
+          <div class="tab-pane fade h-100 overflow-auto" id="followers" role="tabpanel" aria-labelledby="vzideos-tab">
+                <div class="mx-5 my-5">
+                <%= render partial: "users/user", collection: Current.user.followers %>
+              </div>
+          </div>
+
           </div>
 
 
@@ -74,7 +83,5 @@
     
     
 <% else %>
-    <%= link_to 'Sign Up', sign_up_path %>
-    or
-    <%= link_to 'Login', sign_in_path %>
+    <%= render"sessions/new"%>
 <% end %>
