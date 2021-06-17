@@ -33,8 +33,8 @@
             <div class="tab-pane fade show active " id="tweets" role="tabpanel" aria-labelledby="tweets-tab">
               <%= render"shared/opinion_form"%>
               <!-- Tweets of the follows -->
-              <div class="px-5 bg-white mx-4 mt-4 pt-3">
-                <p class="text-muted font-weight-bold"> New Tweets </p>
+              <div class="px-5 bg-white mx-4 mt-4 pt-3 pb-3">
+                <p class="text-primary font-weight-bold "> New Tweets </p>
                 <hr>
                 <%= render partial: "opinions/opinion", collection: @home_opinions %>
               </div>
