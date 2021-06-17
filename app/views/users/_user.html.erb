@@ -1,4 +1,5 @@
     <div class="my-2 d-flex">
+    
     <% if user.photo.attached? %>
       <%= cl_image_tag user.photo.key, :width=>80, :height=> 80 , :crop=>"fill", :class=>"rounded-circle align-self-start"%>
     <% else %>
@@ -14,8 +15,12 @@
         <%= link_to "#{user.full_name}" ,profile_path(user_id: user.id),class:"font-weight-bold my-auto", method: :get %>
         <%end%>
       </div>
-      <%if show_follow?(user)%>
-      <%= link_to 'Follow',follow_path(user_id: user.id), class: 'align-self-center ml-auto', method: :post %>
-      <%end%>
 
+              <%if show_follow?(user)%>
+                <%= link_to follow_path(user_id: user.id), method: :post, class:" align-self-center ml-auto" do %>
+              <i class="fa fa-plus-circle  fa-lg" aria-hidden="true"></i>
+              <%end%>
+                            <%else%>
+                <i class="fa fa-check fa-lg  align-self-center ml-auto" aria-hidden="true"></i>
+              <%end%>
     </div>
