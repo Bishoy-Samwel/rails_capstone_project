@@ -3,11 +3,11 @@
 <%= form_with model: @user, url: sign_up_path  do |f| %>
     <p>
         <%= f.label 'Username' %><br>
-        <%= f.text_field :user_name %>
+        <%= f.text_field :user_name,  id: 'user_name' %>
         </p>
     <p>
         <%= f.label 'Fullname' %><br>
-        <%= f.text_field :full_name %>
+        <%= f.text_field :full_name,  id: 'full_name' %>
         </p>
     <p>
     <p>

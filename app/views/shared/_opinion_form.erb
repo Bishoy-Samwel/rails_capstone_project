@@ -5,7 +5,7 @@
                 <p class="font-weight-bold my-3 text-muted">Write Opinion</p>
                 
                 <%= form_for Opinion.new do |f| %>
-                      <%= f.text_field :text, autofocus: true, class: "form-control"%>
+                      <%= f.text_field :text, autofocus: true, class: "form-control", id:"opinion"%>
                       <%= f.submit class: "btn btn-primary float-right m-3" %>
                   <% end %>
                   
