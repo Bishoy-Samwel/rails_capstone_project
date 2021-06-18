@@ -1,10 +1,9 @@
 module UsersHelper
   def followed_by(user, limit = nil)
-    if User.followed_by(Current.user, user).first
-      return User.followed_by(Current.user, user).first.full_name if limit == 1
+    return unless User.followed_by(Current.user, user).first
+    return User.followed_by(Current.user, user).first.full_name if limit == 1
 
-      User.followed_by(Current.user, user)
-    end
+    User.followed_by(Current.user, user)
   end
 
   def img_src(user)

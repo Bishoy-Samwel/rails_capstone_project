@@ -1,7 +1,7 @@
 require 'rails_helper'
 describe 'the sign in sign up processes', type: :feature do
   before :each do
-    User.create(user_name: 'bishoy',  full_name: 'Bishoy')
+    User.create(user_name: 'bishoy', full_name: 'Bishoy')
   end
   it 'signs @user in' do
     visit root_path
@@ -11,7 +11,7 @@ describe 'the sign in sign up processes', type: :feature do
     expect(page).to have_text('Bishoy')
   end
 
-  it 'signs @user up' do  
+  it 'signs @user up' do
     visit root_path
     click_link 'Sign Up'
     expect(current_path).to eq('/sign_up')
