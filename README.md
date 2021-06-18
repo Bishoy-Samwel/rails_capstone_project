@@ -5,7 +5,7 @@
 > A web app users can share and see favourite quotes of their follows on the home page, Users can follow each other and see quotes on the profile page.  
 
 ## Live Demo 
-[live](https://git.heroku.com/bishoy-share-a-quote-project.git)
+[live](https://bishoy-share-a-quote-project.herokuapp.com/)
 
 
 ## Screenshots
