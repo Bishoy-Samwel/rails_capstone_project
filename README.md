@@ -18,14 +18,18 @@
 - Bootstrap 4.4.1
 - Active Storage
 - Cloudinary
+- Heroku
 
 
 ## Screenshot
 
-![twitter]()
+![Home Page](https://res.cloudinary.com/bishorails/image/upload/v1624029508/Screenshot_from_2021-06-18_17-17-30_rkisuo.png)
+
+![Profile Page](https://res.cloudinary.com/bishorails/image/upload/v1624029514/Screenshot_from_2021-06-18_17-17-48_hovtbs.png)
+
 
 ## Live Demo
-[live]()
+[live](https://git.heroku.com/bishoy-share-a-quote-project.git)
 
 
 ## Video Presentation
@@ -47,6 +51,7 @@ Rails 6.1.3.2
 ```
 $ git clone https://github.com/Bishoy-Samwel/rails_capstone_project.git
 $ cd twitter
+
 ```
 
 Instal gems with:
