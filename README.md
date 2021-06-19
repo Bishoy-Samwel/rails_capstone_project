@@ -91,4 +91,5 @@ Open `http://localhost:3000/` in your browser.
 
 ## 📝 License
 
-This Project has no Licence.
+make the project MIT [licence](https://opensource.org/licenses/MIT)
+
