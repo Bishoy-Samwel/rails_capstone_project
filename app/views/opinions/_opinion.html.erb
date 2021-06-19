@@ -1,12 +1,17 @@
  <div class=" d-flex pt-3">
                   
-                  <% if opinion.author.photo.attached? %>
-    <%= cl_image_tag opinion.author.photo.key, :width=>90, :height=> 90 , :crop=>"fill", :class=>"rounded float-left  align-self-start"%>
+    <% if opinion.author.photo.attached? %>
+      <%= cl_image_tag opinion.author.photo.key, :width=>90, :height=> 90 , :crop=>"fill", :class=>"rounded float-left  align-self-start"%>
     <% else %>
       <img src="https://picsum.photos/70/70" class="rounded-circle align-self-start">
     <%end%>
-                  <div class="pl-3 d-flex align-self-center flex-column">
-                    <p class="font-weight-bold my-0"><%= opinion.author.full_name%></p>
-                    <p class="text-dark"> <%= opinion.text%> </p>
-                  </div>
+          <div class="pl-3 d-flex align-self-center flex-column">
+            <p class="font-weight-bold my-0"><%= opinion.author.full_name%></p>
+            <p class="text-dark"> <%= opinion.text%> </p>
+          </div>
+    <%if show_delete?(opinion.author)%>
+         <%= link_to  opinion, method: :delete, class:"align-self-center ml-auto" do %>
+         <i class="fa fa-trash" aria-hidden="true"></i>
+        <%end%>
+    <%end%>
 </div>
