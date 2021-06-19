@@ -15,10 +15,12 @@ class User < ApplicationRecord
   scope :followed_by, ->(current, user) { (current.follows) & (user.followers) }
 
   def self.home_opinions (user) 
-    home_opinions = user.opinions
-    user.follows.each do |follow|
-      home_opinions += follow.opinions
+    ids = [user.id]
+    user.follows.find_each do |follow|
+      ids.push(follow.id)
     end
-    home_opinions
+    home_opinions = Opinion.where(author_id: ids)
+    home_opinions.order_by_most_recent
   end
+
 end
