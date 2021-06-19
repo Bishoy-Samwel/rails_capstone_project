@@ -6,7 +6,7 @@
       <img src="https://picsum.photos/70/70" class="rounded-circle align-self-start">
     <%end%>
           <div class="pl-3 d-flex align-self-center flex-column">
-            <p class="font-weight-bold my-0"><%= opinion.author.full_name%></p>
+             <%= link_to "#{opinion.author.full_name}" ,profile_path(user_id: opinion.author.id),class:"font-weight-bold my-0", method: :get %>
             <p class="text-dark"> <%= opinion.text%> </p>
           </div>
     <%if show_delete?(opinion.author)%>
