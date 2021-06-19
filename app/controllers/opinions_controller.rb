@@ -1,6 +1,6 @@
 class OpinionsController < ApplicationController
   before_action :set_opinion, only: %i[show edit update destroy]
-  
+
   def new
     @opinion = Opinion.new
   end

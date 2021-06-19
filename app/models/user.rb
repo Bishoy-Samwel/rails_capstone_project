@@ -14,7 +14,7 @@ class User < ApplicationRecord
   # Find the intersection between Current.user.follows and user.followers
   scope :followed_by, ->(current, user) { (current.follows) & (user.followers) }
 
-  def self.home_opinions (user) 
+  def self.home_opinions(user)
     ids = [user.id]
     user.follows.find_each do |follow|
       ids.push(follow.id)
@@ -22,5 +22,4 @@ class User < ApplicationRecord
     home_opinions = Opinion.where(author_id: ids)
     home_opinions.order_by_most_recent
   end
-
 end
