@@ -1,0 +1,87 @@
+<% if Current.user %>
+
+<div class="container-fluid h-100">
+  <div class="row h-100 d-flex">
+    <!-- Left Side -->
+    <%= render"shared/side_nav"%>
+    <!-- Right Side -->
+    <div class="right-1 p-0 col-10 column h-100 overflow-auto">
+      <!-- 1st-Top_nav_icons -->
+     <%= render"shared/top_nav"%>
+      <%# Bottom side %>
+      <div class="bottom-1 row m-0 h-100 h-100 ">
+        <div class="main-info col-9 column p-0 h-100" >
+          <!-- 2nd-Top_nav -->
+          <div class="top-nav-2 position-sticky">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="tweets-tab" data-toggle="tab" href="#tweets" role="tab"
+                  aria-controls="tweets" aria-selected="true">Tweets</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="follows-tab" data-toggle="tab" href="#follows" role="tab" aria-controls="follows"
+                  aria-selected="false">Follows</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="followers-tab" data-toggle="tab" href="#followers" role="tab" aria-controls="followers"
+                  aria-selected="false">Followers</a>
+              </li>
+            </ul>
+          </div>
+          <!-- Write your tweet -->
+          <div class="tab-content h-100 overflow-auto" id="myTabContent">
+            <div class="tab-pane fade show active " id="tweets" role="tabpanel" aria-labelledby="tweets-tab">
+              <%= render"shared/opinion_form"%>
+              <!-- Tweets of the follows -->
+              <div class="px-5 bg-white mx-4 mt-4 pt-3 pb-3">
+                <p class="text-primary font-weight-bold "> New Tweets </p>
+                <hr>
+                <%= render partial: "opinions/opinion", collection: @home_opinions %>
+              </div>
+
+            </div>
+          <div class="tab-pane fade h-100 overflow-auto" id="follows" role="tabpanel" aria-labelledby="follows-tab">
+                <div class="mx-5 my-5">
+                  <%= render partial: "users/user", collection: Current.user.follows %>
+                </div>
+          </div>
+          <div class="tab-pane fade h-100 overflow-auto" id="followers" role="tabpanel" aria-labelledby="vzideos-tab">
+                <div class="mx-5 my-5">
+                <%= render partial: "users/user", collection: Current.user.followers %>
+              </div>
+          </div>
+
+          </div>
+
+
+        </div>
+        <!-- Who to follow section -->
+        <div class="right-2 border-left border-bottom col-3 h-100">
+          <div class="pt-3 mx-3 d-flex justify-content-between">
+            <p class="font-weight-bold text-muted">Who To Follow</p>
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
+              <path
+                d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
+            </svg>
+          </div>
+          <hr class="mx-3">
+          <div class="d-flex flex-column p-2  h-100 overflow-auto" >
+            <%= render partial: "users/user", collection: @who_to_follow %>
+          </div>
+          <hr class="mx-3">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+    
+    
+<% else %>
+    <%= render"sessions/new"%>
+<% end %>

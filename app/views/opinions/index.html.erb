@@ -1,0 +1,12 @@
+<%= form_for(@opinion) do |form| %>
+  <%= form.label :content %>
+  <%= form.text_field :text, id: :opinion_text, placeholder: 'Add New Opinion' %>
+  <%= form.submit 'Submit'%>
+<% end %>
+
+<article class="timeline">
+    Recent posts
+  <ul class="posts">
+    <%= render current.user.home_opinions %>
+  </ul>
+</article>

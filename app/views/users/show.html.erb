@@ -1,0 +1,137 @@
+<% if Current.user %>
+
+<div class="container-fluid h-100">
+  <div class="row h-100 d-flex overflow-auto">
+    <!-- Left Side -->
+    <%= render"shared/side_nav"%>
+    <!-- Right Side -->
+    <div class="right-1 p-0 col-10 column h-100 overflow-auto">
+      <!-- 1st-Top_nav_icons -->
+     <%= render"shared/top_nav"%>
+      <%# Bottom side %>
+      <div class="bottom-1 row m-0 h-100">
+        <div class="main-info col-9 column p-0 h-100" >
+        <div class="row m-0 cover-img" style= "  width: 100%; min-height: 15em; margin: auto;background-image: url('https://image.shutterstock.com/image-illustration/aesthetic-anime-theme-illustration-boy-260nw-1762336295.jpg'); background-size: cover;background-repeat: no-repeat;">
+          </div>
+          <!-- 2nd-Top_nav -->
+          <div class="top-nav-2 position-sticky">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="tweets-tab" data-toggle="tab" href="#tweets" role="tab"
+                  aria-controls="tweets" aria-selected="true">Tweets</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="follows-tab" data-toggle="tab" href="#follows" role="tab" aria-controls="follows"
+                  aria-selected="false">Follows</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="followers-tab" data-toggle="tab" href="#followers" role="tab" aria-controls="followers"
+                  aria-selected="false">followers</a>
+              </li>
+            </ul>
+          </div>
+            <div class="tab-content h-100"  id="myTabContent">
+              <div class="tab-pane fade show active h-100 overflow-auto" id="tweets" role="tabpanel" aria-labelledby="tweets-tab">
+                 <!-- Write your tweet -->
+                <%= render"shared/opinion_form"%>
+                <div class="px-5 bg-white mx-4 mt-4 pt-3 pb-4">
+                  <p class="text-muted font-weight-bold"> <%=@user.full_name%>'s Opinions </p>
+                  <hr>
+                <!-- Tweets of the follows -->
+                  <%= render partial: "opinions/opinion", collection: @user.opinions  %>
+                </div>
+              </div>
+              <div class="tab-pane fade h-100 overflow-auto" id="follows" role="tabpanel" aria-labelledby="follows-tab">
+                <div class="mx-5 my-5">
+                  <%= render partial: "users/user", collection: @user.follows %>
+                </div>
+              </div>
+              <div class="tab-pane fade h-100 overflow-auto" id="followers" role="tabpanel" aria-labelledby="vzideos-tab">
+                <div class="mx-5 my-5">
+                <%= render partial: "users/user", collection: @user.followers %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Who to follow section -->
+        <div class="right-2 border-left border-bottom col-3 h-100 overflow-auto">
+          <!-- profile info -->
+          <div class="d-flex flex-column mt-3 ">
+            <div class="d-flex align-items-center justify-content-center">
+              <%if show_follow?(@user)%>
+                <%= link_to follow_path(user_id: @user.id), method: :post, class:" mx-2 align-self-center" do %>
+              <i class="fa fa-plus-circle  fa-lg" aria-hidden="true"></i>
+              <%end%>
+                            <%else%>
+                <i class="fa fa-check fa-lg  mx-2 align-self-center" aria-hidden="true"></i>
+              <%end%>
+
+              <!-- photo plus name -->
+              <div class="flex-column  align-items-center align-self-center">
+                 <% if @user.photo.attached? %>
+                  <%= cl_image_tag @user.photo.key, :width=>80, :height=> 80 , :crop=>"fill", :class=>"rounded-circle align-self-start"%>
+                  <% else %>
+                    <img src="https://picsum.photos/70/70" class="rounded-circle align-self-start">
+                  <%end%> 
+              </div>
+              <i class="fa fa-bars fa-lg mx-3 align-self-center" aria-hidden="true"></i>
+            </div>
+            <div>
+              <p class="font-weight-bold text-center my-2"><%= @user.full_name%></p>
+            </div>
+
+            <!-- tweets, follows, followes -->
+            <div class="d-flex justify-content-center w-100 border-top border-bottom">
+              <div class="d-flex flex-column  border-right p-3 justify-content-center">
+                <div class="d-flex justify-content-center">
+                  <p class="font-weight-bold text-center"><%= @user.opinions.count%></p>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <p class="text-muted">Tweets</p>
+                </div>
+              </div>
+              <div class="d-flex flex-column border-right p-3 justify-content-center">
+                <div class="d-flex justify-content-center">
+                  <p class="font-weight-bold"><%= @user.followings.count%></p>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <p class="text-muted">Following</p>
+                </div>
+              </div>
+              <div class="d-flex flex-column  p-3 justify-content-center">
+                <div class="d-flex justify-content-center">
+                  <p class="font-weight-bold"><%= @user.followers.count%></p>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <p class="text-muted">Followers</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pt-3 mx-3 d-flex justify-content-between">
+            <p class="font-weight-bold text-muted">Followed By</p>
+            <hr class="mx-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
+              <path
+                d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
+            </svg>
+          </div>
+          <hr class="mx-3">
+           <%= render partial: "users/user", collection: @user.followers %>
+          <div class="d-flex flex-column p-2">
+          </div>
+          <hr class="mx-3">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+<% else %>
+    <%= link_to 'Sign Up', sign_up_path %>
+    or
+    <%= link_to 'Login', sign_in_path %>
+<% end %>
