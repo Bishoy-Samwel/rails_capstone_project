@@ -91,5 +91,5 @@ Open `http://localhost:3000/` in your browser.
 
 ## 📝 License
 
-make the project MIT [licence](https://opensource.org/licenses/MIT)
+ MIT [licence](https://opensource.org/licenses/MIT)
 
