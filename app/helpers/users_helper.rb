@@ -2,7 +2,8 @@ module UsersHelper
   def followed_by(user, limit = nil)
     return unless User.followed_by(Current.user, user).first
 
-    User.followed_by(Current.user, user).first.full_name if limit == 1
+    return User.followed_by(Current.user, user).first.full_name if limit == 1
+
     User.followed_by(Current.user, user)
   end
 
