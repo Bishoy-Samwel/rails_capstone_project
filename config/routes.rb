@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   get 'sign_in', to: 'sessions#new'
   post 'sign_in', to: 'sessions#create', as: 'log_in'
   delete 'logout', to: 'sessions#destroy'
-  resources :users, only: %i[new create edit update]
+  resources :users
   resources :opinions
   post 'follow', to: 'followings#create'
+  delete 'unfollow', to: 'followings#destroy'
   get 'profile', to: 'users#show'
 end

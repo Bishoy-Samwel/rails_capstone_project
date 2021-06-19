@@ -15,12 +15,16 @@
         <%= link_to "#{user.full_name}" ,profile_path(user_id: user.id),class:"font-weight-bold my-auto", method: :get %>
         <%end%>
       </div>
-
-              <%if show_follow?(user)%>
+      <% if Current.user != user%>
+ <%if show_follow?(user)%>
                 <%= link_to follow_path(user_id: user.id), method: :post, class:" align-self-center ml-auto" do %>
-              <i class="fa fa-plus-circle  fa-lg" aria-hidden="true"></i>
+                 <i class="fa fa-plus-circle  fa-lg" aria-hidden="true"></i>
+                <%end%>
+              <%else%>
+              <%= link_to unfollow_path(user_id: user.id), method: :delete, class:" align-self-center ml-auto" do %>
+                  <i class="fa fa-check fa-lg " aria-hidden="true"></i>
+                <%end%>
               <%end%>
-                            <%else%>
-                <i class="fa fa-check fa-lg  align-self-center ml-auto" aria-hidden="true"></i>
-              <%end%>
+      <% end %>
+             
     </div>

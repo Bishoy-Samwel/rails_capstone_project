@@ -8,4 +8,8 @@ class FollowingsController < ApplicationController
     end
     redirect_back(fallback_location: root_path)
   end
+  def destroy
+    @following = Following.find_by(follower_id: Current.user.id,followed_id: params[:user_id]).destroy
+    redirect_back(fallback_location: root_path)
+  end
 end
