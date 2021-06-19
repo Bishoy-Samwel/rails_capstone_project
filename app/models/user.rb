@@ -14,9 +14,9 @@ class User < ApplicationRecord
   # Find the intersection between Current.user.follows and user.followers
   scope :followed_by, ->(current, user) { (current.follows) & (user.followers) }
 
-  def home_opinions
-    home_opinions = Current.user.opinions
-    Current.user.follows.each do |follow|
+  def self.home_opinions (user) 
+    home_opinions = user.opinions
+    user.follows.each do |follow|
       home_opinions += follow.opinions
     end
     home_opinions

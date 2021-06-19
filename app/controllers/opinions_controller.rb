@@ -1,9 +1,8 @@
 class OpinionsController < ApplicationController
   before_action :set_opinion, only: %i[show edit update destroy]
-
+  
   def new
     @opinion = Opinion.new
-    @opinions = Opinion.order_by_most_recent
   end
 
   def create
