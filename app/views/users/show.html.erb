@@ -58,13 +58,15 @@
           <!-- profile info -->
           <div class="d-flex flex-column mt-3 ">
             <div class="d-flex align-items-center justify-content-center">
-              <%if show_follow?(@user)%>
-                <%= link_to follow_path(user_id: @user.id), method: :post, class:" mx-2 align-self-center" do %>
-              <i class="fa fa-plus-circle  fa-lg" aria-hidden="true"></i>
-              <%end%>
-                            <%else%>
-                <i class="fa fa-check fa-lg  mx-2 align-self-center" aria-hidden="true"></i>
-              <%end%>
+          <%if show_follow?(@user)%>
+                    <%= link_to follow_path(user_id: @user.id), method: :post, class:" mx-2 align-self-center" do %>
+                  <i class="fa fa-plus-circle  fa-lg" aria-hidden="true"></i>
+                  <%end%>
+                    <%else%>
+                    <i class="fa fa-check fa-lg  mx-2 align-self-center" aria-hidden="true"></i>
+                  <%end%>
+
+              
 
               <!-- photo plus name -->
               <div class="flex-column  align-items-center align-self-center">
@@ -73,12 +75,13 @@
                   <% else %>
                     <img src="https://picsum.photos/70/70" class="rounded-circle align-self-start">
                   <%end%> 
+                              <div>
+              <p class="font-weight-bold text-center my-2"><%= @user.full_name%></p>
+            </div>
               </div>
               <i class="fa fa-bars fa-lg mx-3 align-self-center" aria-hidden="true"></i>
             </div>
-            <div>
-              <p class="font-weight-bold text-center my-2"><%= @user.full_name%></p>
-            </div>
+
 
             <!-- tweets, follows, followes -->
             <div class="d-flex justify-content-center w-100 border-top border-bottom">
