@@ -64,6 +64,29 @@ Setup database with:
 
 ### Usage
 
+Setup Cloudinary with:
+Create a `cloudinary.yml` inside of `/config` with the following code.
+```
+development:
+  cloud_name: bishorails
+  api_key: 'xxx'
+  api_secret:xxx
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name:xxx
+  api_key: 'xxx'
+  api_secret:xxx
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: bishorails
+  api_key: 'xxx'
+  api_secret:xxx
+  enhance_image_tag: true
+  static_file_support: false
+```
+
 Start server with:
 
 ```
