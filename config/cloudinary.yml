@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: bishorails
+  api_key: '778394599477445'
+  api_secret: NNMUvxm1xKiS04eXECs0exsPYVM
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: bishorails
+  api_key: '778394599477445'
+  api_secret: NNMUvxm1xKiS04eXECs0exsPYVM
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: bishorails
+  api_key: '778394599477445'
+  api_secret: NNMUvxm1xKiS04eXECs0exsPYVM
+  enhance_image_tag: true
+  static_file_support: false

@@ -1,0 +1,30 @@
+    <div class="my-2 d-flex">
+    
+    <% if user.photo.attached? %>
+      <%= cl_image_tag user.photo.key, :width=>80, :height=> 80 , :crop=>"fill", :class=>"rounded-circle align-self-start"%>
+    <% else %>
+      <img src="https://picsum.photos/80/80" class="rounded-circle align-self-start">
+    <%end%> 
+      <div class="d-flex flex-column p-2">
+        <%if followed_by(user,1)%>
+        <%= link_to "#{user.full_name}" ,profile_path(user_id: user.id),class:"font-weight-bold align-self-start", method: :get %>
+          <p class="align-self-start text-muted">Followed By <a href="">
+                    <%= followed_by(user,1) %>
+                </a></p>
+        <%else%>
+        <%= link_to "#{user.full_name}" ,profile_path(user_id: user.id),class:"font-weight-bold my-auto", method: :get %>
+        <%end%>
+      </div>
+      <% if Current.user != user%>
+ <%if show_follow?(user)%>
+                <%= link_to follow_path(user_id: user.id), method: :post, class:" align-self-center ml-auto" do %>
+                 <i class="fa fa-plus-circle  fa-lg" aria-hidden="true"></i>
+                <%end%>
+              <%else%>
+              <%= link_to unfollow_path(user_id: user.id), method: :delete, class:" align-self-center ml-auto" do %>
+                  <i class="fa fa-check fa-lg " aria-hidden="true"></i>
+                <%end%>
+              <%end%>
+      <% end %>
+             
+    </div>
